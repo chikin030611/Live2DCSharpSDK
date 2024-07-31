@@ -186,4 +186,13 @@ public class LAppLive2DManager(LAppDelegate lapp) : IDisposable
     {
         ReleaseAllModel();
     }
+
+    public async void StartSpeaking(string filePath)
+    {
+        for (int i = 0; i < _models.Count; i++)
+        {
+            await _models[i]._wavFileHandler.LoadWavFile(filePath);
+            _models[i].StartRandomMotion(LAppDefine.MotionGroupIdle, MotionPriority.PriorityNormal, OnFinishedMotion);
+        }
+    }
 }

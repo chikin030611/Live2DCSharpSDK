@@ -180,4 +180,9 @@ public class LAppDelegate : IDisposable
 
         View.OnTouchesMoved(_mouseX, _mouseY);
     }
+
+    public void StartSpeaking(string filePath)
+    {
+        Live2dManager.StartSpeaking(filePath);
+    }
 }

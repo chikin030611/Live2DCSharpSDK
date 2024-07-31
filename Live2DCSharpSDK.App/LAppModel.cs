@@ -94,7 +94,7 @@ public class LAppModel : CubismUserModel
     /// <summary>
     /// wavファイルハンドラ
     /// </summary>
-    //LAppWavFileHandler _wavFileHandler;
+    public LAppWavFileHandler _wavFileHandler = new LAppWavFileHandler();
 
     private readonly LAppDelegate _lapp;
 
@@ -416,8 +416,8 @@ public class LAppModel : CubismUserModel
             float value = 0.0f;
 
             // 状態更新/RMS値取得
-            //_wavFileHandler.Update(deltaTimeSeconds);
-            //value = _wavFileHandler.GetRms();
+            _wavFileHandler.Update(deltaTimeSeconds);
+            value = (float)_wavFileHandler.GetRms();
 
             for (int i = 0; i < _lipSyncIds.Count; ++i)
             {
@@ -521,9 +521,9 @@ public class LAppModel : CubismUserModel
         string voice = item.Sound;
         if (!string.IsNullOrWhiteSpace(voice))
         {
-            //string path = voice;
-            //path = _modelHomeDir + path;
-            //_wavFileHandler.Start(path);
+            string path = voice;
+            path = _modelHomeDir + path;
+            _wavFileHandler.Start(path);
         }
 
         CubismLog.Debug($"[Live2D]start motion: [{group}_{no}]");
