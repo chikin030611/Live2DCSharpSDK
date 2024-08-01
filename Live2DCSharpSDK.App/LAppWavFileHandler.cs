@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,27 +32,9 @@ public class LAppWavFileHandler
         this._byteReader = new ByteReader();
     }
 
-    //public static LAppWavFileHandler GetInstance()
-    //{
-    //    if (s_instance == null)
-    //    {
-    //        s_instance = new LAppWavFileHandler();
-    //    }
-
-    //    return s_instance;
-    //}
-
-    //public static void ReleaseInstance()
-    //{
-    //    if (s_instance != null)
-    //    {
-    //        s_instance = null!;
-    //    }
-    //}
-
     public bool Update(float deltaTimeSeconds)
     {
-        int goalOffset;
+        double goalOffset;
         float rms;
 
         // データロード前/ファイル末尾に達した場合は更新しない
@@ -63,7 +46,7 @@ public class LAppWavFileHandler
 
         // 経過時間後の状態を保持
         _userTimeSeconds += deltaTimeSeconds;
-        goalOffset = (int)Math.Floor(_userTimeSeconds * _wavFileInfo._samplingRate);
+        goalOffset = Math.Floor(_userTimeSeconds * _wavFileInfo._samplingRate);
         if (goalOffset > _wavFileInfo._samplePerChannel)
         {
             goalOffset = _wavFileInfo._samplePerChannel;
@@ -75,7 +58,14 @@ public class LAppWavFileHandler
         {
             for (int sampleCount = (int)_sampleOffset; sampleCount < goalOffset; sampleCount++)
             {
-                float pcm = _pcmData[sampleCount * _wavFileInfo._numberOfChannels + channelCount];
+                int index = sampleCount * _wavFileInfo._numberOfChannels + channelCount;
+                if (index >= _pcmData.Length)
+                {
+                    // Ensure we do not go out of bounds
+                    break;
+                }
+
+                float pcm = _pcmData[index];
                 rms += pcm * pcm;
             }
         }
@@ -103,8 +93,6 @@ public class LAppWavFileHandler
 
     public async Task<bool> LoadWavFile(string filePath)
     {
-        bool ret = false;
-
         if (_pcmData != null)
         {
             ReleasePcmData();
@@ -115,21 +103,15 @@ public class LAppWavFileHandler
         if (response != null)
         {
             // Process the response to load PCM data
-            ret = await AsyncWavFileManager(filePath);
+            return await AsyncWavFileManager(filePath);
         }
 
-        return ret;
+        return false;
     }
 
     private async Task<byte[]> FetchAsync(string filePath)
     {
-        //using (var httpClient = new System.Net.Http.HttpClient())
-        //{
-        //    return await httpClient.GetByteArrayAsync(filePath);
-        //}
-
-        // local file
-        return System.IO.File.ReadAllBytes(filePath);
+        return await Task.Run(() => File.ReadAllBytes(filePath));
     }
 
     public async Task<bool> AsyncWavFileManager(string filePath)
@@ -259,6 +241,11 @@ public class LAppWavFileHandler
 
     private void ReleasePcmData()
     {
+        for (int channelCount = 0; channelCount < _wavFileInfo._numberOfChannels; channelCount++) {
+            for (int sampleCount = 0; sampleCount < _wavFileInfo._samplePerChannel; sampleCount++) {
+                _pcmData[sampleCount * _wavFileInfo._numberOfChannels + channelCount] = 0.0f;
+            }
+        }
         _pcmData = Array.Empty<float>();
     }
 }

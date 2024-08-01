@@ -4,6 +4,7 @@ using Live2DCSharpSDK.Framework.Math;
 using Live2DCSharpSDK.Framework.Model;
 using Live2DCSharpSDK.Framework.Motion;
 using Live2DCSharpSDK.Framework.Rendering.OpenGL;
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace Live2DCSharpSDK.App;
@@ -419,9 +420,11 @@ public class LAppModel : CubismUserModel
             _wavFileHandler.Update(deltaTimeSeconds);
             value = (float)_wavFileHandler.GetRms();
 
+            float weight = 3f;
+
             for (int i = 0; i < _lipSyncIds.Count; ++i)
             {
-                Model.AddParameterValue(_lipSyncIds[i], value, 0.8f);
+                Model.SetParameterValue(_lipSyncIds[i], value*weight, 1f);
             }
         }
 
@@ -516,7 +519,7 @@ public class LAppModel : CubismUserModel
             motion = (value as CubismMotion)!;
             motion.OnFinishedMotion = onFinishedMotionHandler;
         }
-
+        
         //voice
         string voice = item.Sound;
         if (!string.IsNullOrWhiteSpace(voice))

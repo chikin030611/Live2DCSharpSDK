@@ -191,8 +191,9 @@ public class LAppLive2DManager(LAppDelegate lapp) : IDisposable
     {
         for (int i = 0; i < _models.Count; i++)
         {
+            _models[i]._wavFileHandler.Start(filePath);
             await _models[i]._wavFileHandler.LoadWavFile(filePath);
-            _models[i].StartRandomMotion(LAppDefine.MotionGroupIdle, MotionPriority.PriorityNormal, OnFinishedMotion);
+            _models[i].StartMotion(LAppDefine.MotionGroupIdle, 0, MotionPriority.PriorityIdle, OnFinishedMotion);
         }
     }
 }
