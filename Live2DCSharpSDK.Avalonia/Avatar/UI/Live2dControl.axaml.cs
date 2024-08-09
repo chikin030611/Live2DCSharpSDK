@@ -37,7 +37,12 @@ public partial class Live2dControl : UserControl
             DisplayQuestions.Add(new QuestionItem { Id = id, Question = question });
         }
 
-        //App.OnClose += App_OnClose;
+        App.OnClose += App_OnClose;
+    }
+
+    private void App_OnClose()
+    {
+        _renderTimer.Close();
     }
 
     private void QuestionsItemsControl_Loaded(object sender, RoutedEventArgs e)
@@ -61,12 +66,7 @@ public partial class Live2dControl : UserControl
     {
         if (sender is Button button && button.Tag is int questionId)
         {
-            Console.WriteLine("Asked! Question " + questionId);
+            _render.StartSpeaking(questionId);
         }
-    }
-
-    private void App_OnClose()
-    {
-        _renderTimer.Close();
     }
 }

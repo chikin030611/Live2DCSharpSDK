@@ -13,8 +13,6 @@ public class Live2dRender : OpenGlControlBase
     private LAppDelegate _lapp;
     private LAppModel _model;
 
-    private LAppDelegate lapp;
-
     private string _info = string.Empty;
     private DateTime time;
 
@@ -48,7 +46,7 @@ public class Live2dRender : OpenGlControlBase
 
         try
         {
-            lapp = new(new AvaloniaApi(this, gl), Console.WriteLine)
+            _lapp = new(new AvaloniaApi(this, gl), Console.WriteLine)
             {
                 BGColor = new(0, 0, 0, 0)
             };
@@ -57,7 +55,7 @@ public class Live2dRender : OpenGlControlBase
         {
             throw new Exception(e.Message);
         }
-        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\", "Haru");
+        var model = _lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\", "Haru");
         CheckError(gl);
     }
 
@@ -90,7 +88,7 @@ public class Live2dRender : OpenGlControlBase
             span = (float)(now - time).TotalSeconds;
             time = now;
         }
-        lapp.Run(span);
+        _lapp.Run(span);
         CheckError(gl);
     }
 

@@ -1,11 +1,15 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Shapes;
 using Avalonia.Markup.Xaml;
+using System;
 
 namespace Live2DCSharpSDK.Avalonia;
 
 public partial class App : Application
 {
+    public static event Action? OnClose;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -19,5 +23,10 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+    }
+    public static void Close()
+    {
+        OnClose?.Invoke();
+        Environment.Exit(Environment.ExitCode);
     }
 }
