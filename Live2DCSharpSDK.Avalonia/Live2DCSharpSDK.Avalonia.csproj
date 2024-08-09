@@ -25,9 +25,20 @@
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.11" />
+    <PackageReference Include="System.Windows.Extensions" Version="9.0.0-preview.6.24327.7" />
   </ItemGroup>
 	
   <ItemGroup>
     <ProjectReference Include="..\Live2DCSharpSDK.App\Live2DCSharpSDK.App.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Resource\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Compile Update="Avatar\UI\Live2dControl.axaml.cs">
+      <DependentUpon>Live2dControl.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
