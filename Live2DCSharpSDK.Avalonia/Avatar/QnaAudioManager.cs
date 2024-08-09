@@ -4,6 +4,14 @@ using System.Media;
 
 namespace Live2DCSharpSDK.Avalonia.Avatar;
 
+public record QnaObj
+{
+    public int Id;
+    public string Question;
+    public string Answer;
+    public string AudioPath;
+}
+
 public class QnaAudioManager()
 {
     // SoundPlayer instance
