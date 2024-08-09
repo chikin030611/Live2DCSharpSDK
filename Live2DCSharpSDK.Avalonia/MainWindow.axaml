@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:Live2DCSharpSDK.Avalonia"
+	xmlns:views="clr-namespace:Live2DCSharpSDK.Avalonia.Avatar.UI"
     Title="Live2DCSharpSDK.Avalonia"
     Width="600"
     Height="600"
@@ -12,19 +13,9 @@
     d:DesignWidth="600"
     mc:Ignorable="d">
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top" Text="{Binding #GL.Info}" />
-        <Button
-            Name="Button1"
-            Width="100"
-            Height="30"
-            Padding="0"
-            VerticalAlignment="Bottom"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            Content="刷新" />
-        <Panel>
-            <pages:OpenGlPageControl Name="GL" />
-            <Panel Name="GLTop" />
-        </Panel>
+		<views:Live2dControl 
+			DockPanel.Dock="Top"
+			Width="500"
+			Height="500" />
     </DockPanel>
 </Window>

@@ -46,8 +46,7 @@ public partial class MainWindow : Window
         {
             BGColor = new(0, 1, 0, 1)
         };
-        var model = lapp.Live2dManager.LoadModel("F:\\live2d\\Resources\\Mao", "Mao");
-        //model = lapp.Live2dManager.LoadModel("F:\\Downloads\\haru_greeter_pro_jp\\haru_greeter_pro_jp\\runtime", "haru_greeter_t05");
+        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\Haru", "Haru");
     }
 
     private void GLControl_Render(TimeSpan obj)
