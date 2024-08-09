@@ -18,5 +18,19 @@
             CornerRadius="30"
             IsVisible="False">
 		</Border>
+		<ItemsControl
+            Name="QuestionsItemsControl"
+			ItemsSource="{Binding DisplayQuestions}"
+			Loaded="QuestionsItemsControl_Loaded">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Button
+						Name="{Binding Name}"
+                        Content="{Binding Question}"
+                        Tag="{Binding Id}"
+                        />
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
 	</Panel>
 </UserControl>

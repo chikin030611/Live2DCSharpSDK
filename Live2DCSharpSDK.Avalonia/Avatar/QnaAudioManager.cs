@@ -1,9 +1,8 @@
-﻿using Live2DCSharpSDK.Avalonia.Avatar;
-using System;
+﻿using System;
 using System.IO;
 using System.Media;
 
-namespace Live2DCSharpSDK.Avatar;
+namespace Live2DCSharpSDK.Avalonia.Avatar;
 
 public class QnaAudioManager()
 {

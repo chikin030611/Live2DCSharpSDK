@@ -33,12 +33,11 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <Folder Include="Resource\" />
-  </ItemGroup>
-	
-  <ItemGroup>
     <Compile Update="Avatar\UI\Live2dControl.axaml.cs">
       <DependentUpon>Live2dControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Avatar\UI\QuestionControl.axaml.cs">
+      <DependentUpon>QuestionControl.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
