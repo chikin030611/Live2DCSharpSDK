@@ -420,7 +420,7 @@ public class LAppModel : CubismUserModel
             _wavFileHandler.Update(deltaTimeSeconds);
             value = (float)_wavFileHandler.GetRms();
 
-            float weight = 3f;
+            float weight = 3f; // Configure it as needed.
 
             for (int i = 0; i < _lipSyncIds.Count; ++i)
             {

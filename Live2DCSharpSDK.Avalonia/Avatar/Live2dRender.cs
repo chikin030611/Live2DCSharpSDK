@@ -74,11 +74,12 @@ public class Live2dRender : OpenGlControlBase
             throw new Exception(e.Message);
         }
 
+        // Load the model
         const string modelName = "Haru";
         string relativePath = $@"..\..\..\..\resources\models\{modelName}";
         string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
-
         var model = _lapp.Live2dManager.LoadModel(fullPath, modelName);
+
         CheckError(gl);
     }
 
