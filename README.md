@@ -35,6 +35,18 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 2. Configure startup project as **Live2DCSharp.[Avalonia OR OpenTK OR WPF]**
 3. Start the project
 
+## Modules
+
+- **Live2DCSharpSDK.Framework**: Live2D Cubism Framework
+- **Live2DCSharpSDK.App**: Live2D model renderer
+- **Live2DCSharpSDK.Avalonia**: GUI built with [AvaloniaUI](https://avaloniaui.net/)
+- **Live2DCSharpSDK.OpenTK**: GUI built with [OpenTK](https://opentk.net/)
+- **Live2DCSharpSDK.WPF**: GUI built with **WPF** and [OpenTK](https://opentk.net/)
+
+**Live2DCSharpSDK.Avalonia** is the only project that can be started and used on my computer. For **Live2DCSharpSDK.OpenTK**, the app crashes when launched. For **Live2DCSharpSDK.WPF**, only black screen is shown.
+
+Only the GUI projects should be modified for implementation on other projects. **Live2DCSharpSDK.App** is not recommended to be modified unless necessary.
+
 ## How it works
 
 ### Main Components
@@ -53,17 +65,6 @@ In ```Live2dRender.cs```, ```StartSpeaking()``` calls a function in ```QnaAudioM
 
 Live2D models and audio of answers are stored in ```/resources/models``` and ```/resources/audio``` respectively.
 
-## Modules
-
-- **Live2DCSharpSDK.Framework**: Live2D Cubism Framework
-- **Live2DCSharpSDK.App**: Live2D model renderer
-- **Live2DCSharpSDK.Avalonia**: GUI built with [AvaloniaUI](https://avaloniaui.net/)
-- **Live2DCSharpSDK.OpenTK**: GUI built with [OpenTK](https://opentk.net/)
-- **Live2DCSharpSDK.WPF**: GUI built with **WPF** and [OpenTK](https://opentk.net/)
-
-**Live2DCSharpSDK.Avalonia** is the only project that can be started and used on my computer. For **Live2DCSharpSDK.OpenTK**, the app crashes when launched. For **Live2DCSharpSDK.WPF**, only black screen is shown.
-
-Only the GUI projects should be modified for implementation on other projects. **Live2DCSharpSDK.App** is not recommended to be modified unless necessary.
 
 ## Known Issues
 
