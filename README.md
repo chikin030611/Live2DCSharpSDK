@@ -12,9 +12,12 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 - [Live2D Cubism Core](https://www.live2d.com/en/sdk/download/native/)
 
-1. Extract the zip file.
-2. Copy ```Live2DCubismCore.dll``` from ```\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64```.
-3. Paste the ```Live2DCubismCore.dll``` in ```\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0```.
+1. Download Cubism SDK from the website.
+2. Extract the zip file.
+3. Copy ```Live2DCubismCore.dll``` from ```\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64```.
+4. Paste the ```Live2DCubismCore.dll``` in ```\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0```.
+
+\* ```\bin\Debug\net8.0\``` should appear after running the application at least once.
 
 ### Using terminal to start the project
     # Clone this repository
@@ -28,14 +31,17 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 ### Using Visual Studio to start the project
 
-1. Configure startup project as **Live2DCSharp.[Avalonia OR OpenTK OR WPF]**
-2. Start the project
+1. Open ```Live2DCSharpSDK.sln``` in root directory.
+2. Configure startup project as **Live2DCSharp.[Avalonia OR OpenTK OR WPF]**
+3. Start the project
 
 ## How it works
 
 ### Main Components
 
-- ```Live2dRender.cs``` in **Live2DCSharpSDK.Avalonia**: Responsible for the overall rendering process within the application.
+- ```Live2dControl.axaml``` in **Live2DCSharpSDK.Avalonia**: Defines the UI layout and elements for the **Live2dControl** user control.
+- ```Live2dControl.axaml.cs``` in **Live2DCSharpSDK.Avalonia**: Contains the code-behind logic for the ```Live2dControl.axaml```, managing interactions, rendering, and data binding. It also initializes the ```Live2dRender.cs``` instance, which is responsible for rendering the Live2D model.
+- ```Live2dRender.cs``` in **Live2DCSharpSDK.Avalonia**: Responsible for the overall rendering process within the Avalonia application.
 - ```LAppDelegate.cs``` in **Live2DCSharpSDK.App**: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. ```Live2dRender.cs``` delegates specific tasks to ```LAppDelegate.cs```, making it a central component for managing Live2D interactions and rendering.
 - ```QnaAudioManager.cs``` in **Live2DCSharpSDK.Avalonia**: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
 
@@ -48,6 +54,7 @@ In ```Live2dRender.cs```, ```StartSpeaking()``` calls a function in ```QnaAudioM
 Live2D models and audio of answers are stored in ```/resources/models``` and ```/resources/audio``` respectively.
 
 ## Modules
+
 - **Live2DCSharpSDK.Framework**: Live2D Cubism Framework
 - **Live2DCSharpSDK.App**: Live2D model renderer
 - **Live2DCSharpSDK.Avalonia**: GUI built with [AvaloniaUI](https://avaloniaui.net/)
