@@ -57,9 +57,11 @@ Only the GUI projects should be modified for implementation on other projects. *
 - ```LAppDelegate.cs``` in **Live2DCSharpSDK.App**: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. ```Live2dRender.cs``` delegates specific tasks to ```LAppDelegate.cs```, making it a central component for managing Live2D interactions and rendering.
 - ```QnaAudioManager.cs``` in **Live2DCSharpSDK.Avalonia**: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
 
-### Data and Code Flow
+### Code Flow
 
-In ```Live2dRender.cs```, ```StartSpeaking()``` calls a function in ```QnaAudioManager.cs``` for audio playback (model speaking). Note that the model is rendered by OpenGL and the audio is played by **System.Media.SoundPlayer**. Thus, the audio player is not attached to Live2D model, resulting audio still plays when the model is disabled.
+In ```Live2dRender.cs```, ```StartSpeaking()``` calls a function in ```QnaAudioManager.cs``` for audio playback (model speaking). ```Live2dRender.cs``` also interacts with the ```LAppDelegate.cs``` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
+
+Note that the model is rendered by OpenGL and the audio is played by **System.Media.SoundPlayer**. Thus, the audio player is not attached to Live2D model, resulting audio still plays when the model is disabled.
 
 ### Resources
 
