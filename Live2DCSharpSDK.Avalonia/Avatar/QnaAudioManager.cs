@@ -70,7 +70,7 @@ public class QnaAudioManager()
     /// <returns>The full audio path.</returns>
     public static string GetAudioPath(int id)
     {
-        string relativePath = @"..\..\..\Resource\";
+        string relativePath = @"..\..\..\..\resources\audio";
         string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
         string audioPath = Path.Combine(fullPath, QnaList[id].AudioPath);
         return audioPath;
