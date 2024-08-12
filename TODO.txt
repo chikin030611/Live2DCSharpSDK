@@ -1,0 +1,18 @@
+Documentation:
+- Explain the flow of the data and code
+- Explain the main componenets of the Live2D model
+- Explain the AudioPlayer is separated from the Live2D model. The model is rendered by OpenGL and the audio is played by System.Media.SoundPlayer. SoundPlayer is not attached to the model.
+- How to run the project
+  + Core dll
+  + Set Avalonia as startup project
+- Tools used
+  + OpenGL for rendering the model
+  + Avalonia as frontend framework
+- Document the componenets of the app
+- Remove path in code, core dll, todo
+- Recommend extensions for Visual Studio Code
+  + Avalonia
+- Explain where the audio is
+
+Optional:
+- Try to make WPF and OpenTK works

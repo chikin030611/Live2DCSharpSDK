@@ -8,19 +8,28 @@ using Live2DCSharpSDK.Framework.Motion;
 
 namespace Live2DCSharpSDK.Avalonia.Avatar;
 
+/// <summary>
+/// A class responsible for rendering Live2D models using OpenGL in Avalonia.
+/// </summary>
 public class Live2dRender : OpenGlControlBase
 {
     private LAppDelegate _lapp;
-    private LAppModel _model;
+    private readonly LAppModel _model;
 
     private string _info = string.Empty;
     private DateTime time;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Live2dRender"/> class.
+    /// </summary>
     public Live2dRender()
     {
 
     }
 
+    /// <summary>
+    /// Gets a value indicating whether a model is loaded.
+    /// </summary>
     public bool HaveModel
     {
         get
@@ -33,6 +42,10 @@ public class Live2dRender : OpenGlControlBase
         }
     }
 
+    /// <summary>
+    /// Checks for OpenGL errors and logs them to the console.
+    /// </summary>
+    /// <param name="gl">The OpenGL interface.</param>
     private static void CheckError(GlInterface gl)
     {
         int err;
@@ -40,6 +53,10 @@ public class Live2dRender : OpenGlControlBase
             Console.WriteLine(err);
     }
 
+    /// <summary>
+    /// Initializes OpenGL resources and loads the Live2D model.
+    /// </summary>
+    /// <param name="gl">The OpenGL interface.</param>
     protected override unsafe void OnOpenGlInit(GlInterface gl)
     {
         CheckError(gl);
@@ -55,16 +72,28 @@ public class Live2dRender : OpenGlControlBase
         {
             throw new Exception(e.Message);
         }
-        var model = _lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\", "Haru");
+
+        const string path_to_model = "C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\";
+        const string model_name = "Haru";
+        var model = _lapp.Live2dManager.LoadModel(path_to_model, model_name);
         CheckError(gl);
     }
 
+    /// <summary>
+    /// Deinitializes OpenGL resources.
+    /// </summary>
+    /// <param name="GL">The OpenGL interface.</param>
     protected override void OnOpenGlDeinit(GlInterface GL)
     {
         _lapp?.Dispose();
         _lapp = null!;
     }
 
+    /// <summary>
+    /// Renders the Live2D model using OpenGL.
+    /// </summary>
+    /// <param name="gl">The OpenGL interface.</param>
+    /// <param name="fb">The framebuffer.</param>
     protected override void OnOpenGlRender(GlInterface gl, int fb)
     {
         int x = (int)Bounds.Width;
@@ -92,26 +121,46 @@ public class Live2dRender : OpenGlControlBase
         CheckError(gl);
     }
 
+    /// <summary>
+    /// Gets the list of available motions for the model.
+    /// </summary>
+    /// <returns>A list of motion names.</returns>
     public List<string> GetMotions()
     {
         return _model.Motions;
     }
 
+    /// <summary>
+    /// Gets the list of available expressions for the model.
+    /// </summary>
+    /// <returns>A list of expression names.</returns>
     public List<string> GetExpressions()
     {
         return _model.Expressions;
     }
 
+    /// <summary>
+    /// Plays the specified motion on the model.
+    /// </summary>
+    /// <param name="name">The name of the motion to play.</param>
     public void PlayMotion(string name)
     {
         _model.StartMotion(name, MotionPriority.PriorityForce);
     }
 
+    /// <summary>
+    /// Plays the specified expression on the model.
+    /// </summary>
+    /// <param name="name">The name of the expression to play.</param>
     public void PlayExpression(string name)
     {
         _model.SetExpression(name);
     }
 
+    /// <summary>
+    /// Starts playing the audio associated with the specified question ID.
+    /// </summary>
+    /// <param name="id">The question ID.</param>
     public void StartSpeaking(int id)
     {
         string filePath = QnaAudioManager.GetAudioPath(id);
