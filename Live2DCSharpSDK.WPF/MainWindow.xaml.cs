@@ -24,7 +24,9 @@ namespace Live2DCSharpSDK.WPF;
 public partial class MainWindow : Window
 {
     GLWpfControl GLControl;
+
     private LAppDelegate lapp;
+    LAppModel model;
 
     public MainWindow()
     {
@@ -42,10 +44,7 @@ public partial class MainWindow : Window
             MinorVersion = 3
         };
         GLControl.Start(settings);
-        lapp = new(new OpenTKWPFApi(GLControl), Console.WriteLine)
-        {
-            BGColor = new(0, 1, 0, 1)
-        };
+        lapp = new(new OpenTKWPFApi(GLControl), Console.WriteLine);
         var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\Haru", "Haru");
     }
 
@@ -55,8 +54,6 @@ public partial class MainWindow : Window
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
         lapp.Run((float)obj.TotalSeconds);
     }
-
-    LAppModel model;
 
     private void GLControl_Resized(object sender, SizeChangedEventArgs e)
     {

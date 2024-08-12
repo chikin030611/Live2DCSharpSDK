@@ -4,6 +4,9 @@ using System.Media;
 
 namespace Live2DCSharpSDK.Avalonia.Avatar;
 
+/// <summary>  
+/// Represents a Q&A object with an ID, question, answer, and audio path.  
+/// </summary>  
 public record QnaObj
 {
     public int Id;
@@ -12,6 +15,9 @@ public record QnaObj
     public string AudioPath;
 }
 
+/// <summary>  
+/// Manages the playback of Q&A audio files.  
+/// </summary>
 public class QnaAudioManager()
 {
     // SoundPlayer instance
@@ -19,6 +25,7 @@ public class QnaAudioManager()
 
     // Qna List
     public static readonly QnaObj[] QnaList = [
+            // Example Q&A objects
             new()
             {
                 Id = 0,
