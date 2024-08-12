@@ -3,6 +3,7 @@ using Avalonia.OpenGL;
 using Avalonia.OpenGL.Controls;
 using Live2DCSharpSDK.App;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using Live2DCSharpSDK.Framework.Motion;
 
@@ -73,9 +74,11 @@ public class Live2dRender : OpenGlControlBase
             throw new Exception(e.Message);
         }
 
-        const string path_to_model = "C:\\Personal\\Kenneth\\Live2D-dotnet\\Live2DCSharpSDK\\resources\\models\\Haru";
-        const string model_name = "Haru";
-        var model = _lapp.Live2dManager.LoadModel(path_to_model, model_name);
+        const string modelName = "Haru";
+        string relativePath = $@"..\..\..\..\resources\models\{modelName}";
+        string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+
+        var model = _lapp.Live2dManager.LoadModel(fullPath, modelName);
         CheckError(gl);
     }
 

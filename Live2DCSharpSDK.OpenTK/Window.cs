@@ -28,7 +28,7 @@ public class Window : GameWindow
         //var model = lapp.Live2dManager.LoadModel("F:\\live2d\\Resources\\Mao", "Mao");
         //model.ModelMatrix.TranslateX(0.9f);
 
-        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\", "Haru");
+        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\Live2DCSharpSDK\\resources\\models\\Haru", "Haru");
         //model.ModelMatrix.TranslateX(0.8f);
 
         //model = lapp.Live2dManager.LoadModel("E:\\code\\Live2DCSharpSDK\\Resources\\Haru\\", "Haru");

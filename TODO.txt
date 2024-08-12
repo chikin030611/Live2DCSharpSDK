@@ -1,22 +1,33 @@
 Documentation:
-- Explain the flow of the data and code
+
 - Explain the main componenets of the Live2D model
-- Explain the AudioPlayer is separated from the Live2D model. 
-  The model is rendered by OpenGL and the audio is played by System.Media.SoundPlayer. SoundPlayer is not attached to the model.
-- Explain the mouth movement is delayed the first time the audio is played.
-  This is because the audio is loaded and played in a different thread. The mouth movement is updated in the main thread.
-  However, the mouth movement is synced with the audio after the first time the audio is played.
-- How to run the project
+
+- Explain the flow of the data and code
+
 - Tools used
   + OpenGL for rendering the model
   + Avalonia as frontend framework
-- Document the componenets of the app
-- Remove path in code, core dll, todo
+
+- Explain where the audio and models is
+
+
+- Some models may not open the mouth wide enough, configure the weight in LAppModel.cs: 423
+
+- Explain the AudioPlayer is separated from the Live2D model. 
+  The model is rendered by OpenGL and the audio is played by System.Media.SoundPlayer. SoundPlayer is not attached to the model.
+
+- Explain the mouth movement is delayed the first time the audio is played.
+  This is because the audio is loaded and played in a different thread. The mouth movement is updated in the main thread.
+  However, the mouth movement is synced with the audio after the first time the audio is played.
+  
+
 - Recommend extensions for Visual Studio Code
   + Avalonia
-- Explain where the audio is
-- Some models may not open the mouth wide enough, configure the weight in LAppModel.cs: 423
+
 - For more features (tapping the model, saving), check out the Live2DDotNet project (but the project is complicated)
+
+- Remove path in code, core dll, todo
+
 
 Optional:
 - Try to make WPF and OpenTK works

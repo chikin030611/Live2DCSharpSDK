@@ -45,7 +45,7 @@ public partial class MainWindow : Window
         };
         GLControl.Start(settings);
         lapp = new(new OpenTKWPFApi(GLControl), Console.WriteLine);
-        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\res\\live2d-model\\Haru", "Haru");
+        var model = lapp.Live2dManager.LoadModel("C:\\Personal\\Kenneth\\Live2D-dotnet\\Live2DCSharpSDK\\resources\\models\\Haru", "Haru");
     }
 
     private void GLControl_Render(TimeSpan obj)
