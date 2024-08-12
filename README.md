@@ -18,7 +18,7 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 ### Using terminal to start the project
     # Clone this repository
-    git clone https://github.com/chikin030611/Live2D-dotnet.git
+    git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
     # Go into the repository
     cd Live2DCSharpSDK.Avalonia
