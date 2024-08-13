@@ -1,5 +1,7 @@
 # Live2DCSharpSDK
 
+[中文版README](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/README_ZH.md)
+
 The SDK is designed to implement Live2D models in .NET application.
 
 ![demo](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/image/demo.png)
@@ -45,7 +47,9 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 **Live2DCSharpSDK.Avalonia** is the only project that can be started and used on my computer. For **Live2DCSharpSDK.OpenTK**, the app crashes when launched. For **Live2DCSharpSDK.WPF**, only black screen is shown.
 
-Only the GUI projects should be modified for implementation on other projects. **Live2DCSharpSDK.App** is not recommended to be modified unless necessary.
+Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for implementation on other projects.
+
+**Live2DCSharpSDK.App** can be modified as needed. **Live2DCSharpSDK.Framework** is not recommended to be modified unless necessary.
 
 ## How it works
 
@@ -65,7 +69,7 @@ Note that the model is rendered by OpenGL and the audio is played by **System.Me
 
 ### Resources
 
-Live2D models and audio of answers are stored in ```/resources/models``` and ```/resources/audio``` respectively.
+Live2D models files and audio files of answers are stored in ```/resources/models``` and ```/resources/audio``` respectively.
 
 
 ## Known Issues
