@@ -55,11 +55,11 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 
 ### Main Components
 
-- ```Live2dControl.axaml``` in **Live2DCSharpSDK.Avalonia**: Defines the UI layout and elements for the **Live2dControl** user control.
-- ```Live2dControl.axaml.cs``` in **Live2DCSharpSDK.Avalonia**: Contains the code-behind logic for the ```Live2dControl.axaml```, managing interactions, rendering, and data binding. It also initializes the ```Live2dRender.cs``` instance, which is responsible for rendering the Live2D model.
-- ```Live2dRender.cs``` in **Live2DCSharpSDK.Avalonia**: Responsible for the overall rendering process within the Avalonia application.
-- ```LAppDelegate.cs``` in **Live2DCSharpSDK.App**: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. ```Live2dRender.cs``` delegates specific tasks to ```LAppDelegate.cs```, making it a central component for managing Live2D interactions and rendering.
-- ```QnaAudioManager.cs``` in **Live2DCSharpSDK.Avalonia**: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
+- `Live2DCSharpSDK.Avalonia\Avatar\UI\Live2dControl.axaml`: Defines the UI layout and elements for the **Live2dControl** user control.
+- `Live2DCSharpSDK.Avalonia\Avatar\UI\Live2dControl.axaml.cs`: Contains the code-behind logic for the ```Live2dControl.axaml```, managing interactions, rendering, and data binding. It also initializes the ```Live2dRender.cs``` instance, which is responsible for rendering the Live2D model.
+- `Live2DCSharpSDK.Avalonia\Avatar\Live2dRender.cs`: Responsible for the overall rendering process within the Avalonia application.
+- `Live2DCSharpSDK.App\LAppDelegate.cs`: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. ```Live2dRender.cs``` delegates specific tasks to ```LAppDelegate.cs```, making it a central component for managing Live2D interactions and rendering.
+- `Live2DCSharpSDK.Avalonia\Avatar\QnaAudioManager.cs`: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
 
 ### Code Flow
 
@@ -69,7 +69,7 @@ Note that the model is rendered by OpenGL and the audio is played by **System.Me
 
 ### Resources
 
-Live2D models files and audio files of answers are stored in ```/resources/models``` and ```/resources/audio``` respectively.
+Live2D models files and audio files of answers are stored in ```\resources\models``` and ```\resources\audio``` respectively.
 
 
 ## Known Issues
