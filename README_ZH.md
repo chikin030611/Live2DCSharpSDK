@@ -20,7 +20,7 @@
 
 \* `\bin\Debug\net8.0\`應該在第一次運行應用程式後出現。
 
-### 使用Terminal啟動項目`
+### 使用Terminal啟動項目
     # 複製此repo
     git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
