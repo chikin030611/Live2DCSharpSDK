@@ -84,5 +84,5 @@ Live2D models files and audio files of answers are stored in `\resources\models`
 ## Related
 
 - [Live2D-dotnet](https://github.com/chikin030611/Live2D-dotnet): Similar project with more features(e.g. saving config with no hardcoded path and better UI)
-- [ColorMC](https://github.com/Coloryr/ColorMC/tree/master): the original repo of Live2D-dotnet
+- [ColorMC](https://github.com/Coloryr/ColorMC/tree/master): the original repository of Live2D-dotnet
 
