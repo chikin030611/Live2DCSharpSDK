@@ -6,7 +6,7 @@
 
 ![demo](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/image/demo.png)
 
-此 Project 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) 複製。另外增加了 ```LAppWavFileHandler``` 和 Sample。
+此 Project 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) 複製。另外增加了 `LAppWavFileHandler` 和 Sample。
 
 ## 開始使用
 
@@ -15,12 +15,12 @@
 
 1. 從官網下載 Cubism SDK。
 2. 解壓縮壓縮檔。
-3. 從```\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64```複製```Live2DCubismCore.dll```。
-4. 將```Live2DCubismCore.dll```貼到```\Live2DCSharpSDK.[Avalonia 或 OpenTK 或 WPF]\bin\Debug\net8.0```。
+3. 從`\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`複製`Live2DCubismCore.dll`。
+4. 將`Live2DCubismCore.dll`貼到`\Live2DCSharpSDK.[Avalonia 或 OpenTK 或 WPF]\bin\Debug\net8.0`。
 
-\* ```\bin\Debug\net8.0\```應該在第一次運行應用程式後出現。
+\* `\bin\Debug\net8.0\`應該在第一次運行應用程式後出現。
 
-### 使用Terminal啟動項目```
+### 使用Terminal啟動項目`
     # 複製此repo
     git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
@@ -31,7 +31,7 @@
     dotnet run
 
 ### 使用 Visual Studio 啟動項目
-1. 在根目錄打開 ```Live2DCSharpSDK.sln```。
+1. 在根目錄打開 `Live2DCSharpSDK.sln`。
 2. 將啟動項目配置為 **Live2DCSharp.[Avalonia 或 OpenTK 或 WPF]**。
 3. 啟動項目。
 
@@ -51,22 +51,22 @@
 ## 工作原理
 
 ### 主要元件
-- **Live2DCSharpSDK.Avalonia** 中的 **Live2dControl.axaml**：定義 **Live2dControl** 使用者控制項的UI佈局和元素。
-- **Live2DCSharpSDK.Avalonia** 中的 **Live2dControl.axaml.cs**：包含 ```Live2dControl.axaml``` 程式碼後端邏輯，管理交互、繪製和資料綁定。它也初始化 ```Live2dRender.cs``` ，負責呈現Live2D模型。
-- **Live2DCSharpSDK.Avalonia** 中的 **Live2dRender.cs**：負責Avalonia應用程式整個繪製過程。
-- **Live2DCSharpSDK.App** 中的 **LAppDelegate.cs**：處理Live2D模型的詳細管理，包括初始化、繪製和資源管理。 ```Live2dRender.cs``` 將具體任務委派給 ```LAppDelegate.cs``` ，使其成為管理Live2D交互和繪製的中心元件。
-- **Live2DCSharpSDK.Avalonia** 中的 **QnaAudioManager.cs**：管理與Q&A物件相關聯的音頻文件播放。所有問題、答案和相應答案WAVE文件的名稱都儲存在這裡。
+- `Live2DCSharpSDK.Avalonia.Avatar.UI.Live2dControl.axaml`：定義 **Live2dControl** 使用者控制項的UI佈局和元素。
+- `Live2DCSharpSDK.Avalonia.Avatar.UI.Live2dControl.axaml.cs`：包含 `Live2dControl.axaml` 程式碼後端邏輯，管理交互、繪製和資料綁定。它也初始化 `Live2dRender.cs` ，負責呈現Live2D模型。
+- `Live2DCSharpSDK.Avalonia.Avatar.Live2dRender.cs`：負責Avalonia應用程式整個繪製過程。
+- `Live2DCSharpSDK.App.LAppDelegate.cs`：處理Live2D模型的詳細管理，包括初始化、繪製和資源管理。 `Live2dRender.cs` 將具體任務委派給 `LAppDelegate.cs` ，使其成為管理Live2D交互和繪製的中心元件。
+- `Live2DCSharpSDK.Avalonia.Avatar.QnaAudioManager.cs`：管理與Q&A物件相關聯的音頻文件播放。所有問題、答案和相應答案WAVE文件的名稱都儲存在這裡。
 
 ### 程式碼流程
-在 ```Live2dRender.cs``` ， ```StartSpeaking()``` 調用 ```QnaAudioManager.cs``` 中的功能播放音頻(模型說話)。 ```Live2dRender.cs``` 也與 ```LAppDelegate.cs``` 互動，對音頻播放與Live2D模型嘴部動作進行同步。通過分析音頻聲波，就能調整嘴巴大小實現同步。
+在 `Live2dRender.cs` ， `StartSpeaking()` 調用 `QnaAudioManager.cs` 中的功能播放音頻(模型說話)。 `Live2dRender.cs` 也與 `LAppDelegate.cs` 互動，對音頻播放與Live2D模型嘴部動作進行同步。通過分析音頻聲波，就能調整嘴巴大小實現同步。
 
 需要注意的是，模型通過OpenGL進行呈現，音頻則通過 **System.Media.SoundPlayer** 播放。因此音頻播放器並不附加於Live2D模型，在模型禁用時音頻仍能播放。
 
 ## 資源
-Live2D模型和答案音頻檔案分別儲存在 ```/resources/models``` 和 ```/resources/audio``` 。
+Live2D模型和答案音頻檔案分別儲存在 `\resources\models` 和 `\resources\audio` 。
 
 ## 已知問題
-1. 某些模型在說話時可能無法充分張開嘴巴。可以在 ```LAppModel.cs:423``` 調整 ```weight``` 以調整嘴部動作。
+1. 某些模型在說話時可能無法充分張開嘴巴。可以在 `LAppModel.cs:423` 調整 `weight` 以調整嘴部動作。
 2. 首次播放音頻時，模型嘴部動作會有延遲。但之後嘴部動作會與音頻同步。
 
 ## Visual Studio 推薦擴充功能
