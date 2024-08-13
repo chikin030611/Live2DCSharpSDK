@@ -6,7 +6,7 @@
 
 ![demo](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/image/demo.png)
 
-此 Project 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) Forked。另外增加了 ```LAppWavFileHandler``` 和 Sample。
+此 Project 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) 複製。另外增加了 ```LAppWavFileHandler``` 和 Sample。
 
 ## 開始使用
 
