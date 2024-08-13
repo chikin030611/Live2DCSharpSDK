@@ -51,7 +51,7 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 
 **Live2DCSharpSDK.App** can be modified as needed. **Live2DCSharpSDK.Framework** is not recommended to be modified unless necessary.
 
-## How it works
+## How It Works
 
 ### Main Components
 
@@ -61,7 +61,7 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 - `Live2DCSharpSDK.App.LAppDelegate.cs`: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. `Live2dRender.cs` delegates specific tasks to `LAppDelegate.cs`, making it a central component for managing Live2D interactions and rendering.
 - `Live2DCSharpSDK.Avalonia.Avatar.QnaAudioManager.cs`: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
 
-### Code Flow
+### Workflow
 
 In `Live2dRender.cs`, `StartSpeaking()` calls a function in `QnaAudioManager.cs` for audio playback (model speaking). `Live2dRender.cs` also interacts with the `LAppDelegate.cs` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
 
