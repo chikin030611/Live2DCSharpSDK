@@ -6,7 +6,7 @@ The SDK is designed to implement Live2D models in .NET application.
 
 ![demo](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/image/demo.png)
 
-The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK). ```LAppWavFileHandler``` and sample are added.
+The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK). `LAppWavFileHandler` and sample are added.
 
 ## Getting Started
 
@@ -16,10 +16,10 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 1. Download Cubism SDK from the website.
 2. Extract the zip file.
-3. Copy ```Live2DCubismCore.dll``` from ```\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64```.
-4. Paste the ```Live2DCubismCore.dll``` in ```\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0```.
+3. Copy `Live2DCubismCore.dll` from `\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`.
+4. Paste the `Live2DCubismCore.dll` in `\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0`.
 
-\* ```\bin\Debug\net8.0\``` should appear after running the application at least once.
+\* `\bin\Debug\net8.0\` should appear after running the application at least once.
 
 ### Using terminal to start the project
     # Clone this repository
@@ -33,7 +33,7 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 ### Using Visual Studio to start the project
 
-1. Open ```Live2DCSharpSDK.sln``` in root directory.
+1. Open `Live2DCSharpSDK.sln` in root directory.
 2. Configure startup project as **Live2DCSharp.[Avalonia OR OpenTK OR WPF]**
 3. Start the project
 
@@ -56,25 +56,25 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 ### Main Components
 
 - `Live2DCSharpSDK.Avalonia.Avatar.UI.Live2dControl.axaml`: Defines the UI layout and elements for the **Live2dControl** user control.
-- `Live2DCSharpSDK.Avalonia.Avatar.UI.Live2dControl.axaml.cs`: Contains the code-behind logic for the ```Live2dControl.axaml```, managing interactions, rendering, and data binding. It also initializes the ```Live2dRender.cs``` instance, which is responsible for rendering the Live2D model.
+- `Live2DCSharpSDK.Avalonia.Avatar.UI.Live2dControl.axaml.cs`: Contains the code-behind logic for the `Live2dControl.axaml`, managing interactions, rendering, and data binding. It also initializes the `Live2dRender.cs` instance, which is responsible for rendering the Live2D model.
 - `Live2DCSharpSDK.Avalonia.Avatar.Live2dRender.cs`: Responsible for the overall rendering process within the Avalonia application.
-- `Live2DCSharpSDK.App.LAppDelegate.cs`: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. ```Live2dRender.cs``` delegates specific tasks to ```LAppDelegate.cs```, making it a central component for managing Live2D interactions and rendering.
+- `Live2DCSharpSDK.App.LAppDelegate.cs`: Handles the detailed management of Live2D models, including initialization, rendering, and resource management. `Live2dRender.cs` delegates specific tasks to `LAppDelegate.cs`, making it a central component for managing Live2D interactions and rendering.
 - `Live2DCSharpSDK.Avalonia.Avatar.QnaAudioManager.cs`: Manages the playback of audio files associated with Q&A objects. All questions, answers, and the names of WAVE files of the corresponding answers are stored here.
 
 ### Code Flow
 
-In ```Live2dRender.cs```, ```StartSpeaking()``` calls a function in ```QnaAudioManager.cs``` for audio playback (model speaking). ```Live2dRender.cs``` also interacts with the ```LAppDelegate.cs``` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
+In `Live2dRender.cs`, `StartSpeaking()` calls a function in `QnaAudioManager.cs` for audio playback (model speaking). `Live2dRender.cs` also interacts with the `LAppDelegate.cs` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
 
 Note that the model is rendered by OpenGL and the audio is played by **System.Media.SoundPlayer**. Thus, the audio player is not attached to Live2D model, resulting audio still plays when the model is disabled.
 
 ### Resources
 
-Live2D models files and audio files of answers are stored in ```\resources\models``` and ```\resources\audio``` respectively.
+Live2D models files and audio files of answers are stored in `\resources\models` and `\resources\audio` respectively.
 
 
 ## Known Issues
 
-1. Some models may not open the mouth wide enough when speaking. ```weight``` can be configured to adjust the mouth movement in ```LAppModel.cs:423```.
+1. Some models may not open the mouth wide enough when speaking. `weight` can be configured to adjust the mouth movement in `LAppModel.cs:423`.
 2. The mouth movement of the model is delayed the first time the audio is played. However, the mouth movement is in sync with the audio afterwards.
 
 ## Recommended Extension for Visual Studio
