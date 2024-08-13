@@ -12,22 +12,25 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 ### Prerequisites
 
-- [Live2D Cubism Core](https://www.live2d.com/en/sdk/download/native/)
+Download the zip file of Cubism SDK from the [website](https://www.live2d.com/en/sdk/download/native/). 
 
-1. Download Cubism SDK from the website.
-2. Extract the zip file.
-3. Copy `Live2DCubismCore.dll` from `\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`.
-4. Paste the `Live2DCubismCore.dll` in `\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0`.
+### Set Up The Repo
 
-\* `\bin\Debug\net8.0\` should appear after running the application at least once.
-
-### Running on Terminal
     # Clone this repository
     git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
     # Go into the repository
     cd Live2DCSharpSDK.Avalonia
     
+    # Run the app first, so \bin and \obj can be created
+    dotnet run
+    
+1. Extract the Cubism SDK zip file.
+2. Copy `Live2DCubismCore.dll` from `\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`.
+3. Paste the `Live2DCubismCore.dll` in `\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0`.
+
+### Running on Terminal
+
     # Run the app
     dotnet run
 
@@ -63,6 +66,8 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 
 ### Workflow
 
+In `Live2dControl.axaml.cs`, new `Live2dRender.cs` instance is initialized. When the button in the layout is clicked, `StartSpeaking()` is called.
+
 In `Live2dRender.cs`, `StartSpeaking()` calls a function in `QnaAudioManager.cs` for audio playback (model speaking). `Live2dRender.cs` also interacts with the `LAppDelegate.cs` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
 
 Note that the model is rendered by OpenGL and the audio is played by **System.Media.SoundPlayer**. Thus, the audio player is not attached to Live2D model, resulting audio still plays when the model is disabled.
@@ -70,7 +75,6 @@ Note that the model is rendered by OpenGL and the audio is played by **System.Me
 ### Resources
 
 Live2D models files and audio files of answers are stored in `\resources\models` and `\resources\audio` respectively.
-
 
 ## Known Issues
 
