@@ -1,6 +1,6 @@
 # Live2DCSharpSDK
 
-\* 此README使用了AI由英文翻譯為中文
+\* 此README使用了AI由英文翻譯為中文。如有任何句子不通順的問題，建議參考英文版。
 
 該 SDK 旨在對 .NET 應用程式執行 Live2D 模型。
 
