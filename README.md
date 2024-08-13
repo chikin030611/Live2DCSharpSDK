@@ -21,7 +21,7 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
 
 \* `\bin\Debug\net8.0\` should appear after running the application at least once.
 
-### Using terminal to start the project
+### Running on Terminal
     # Clone this repository
     git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
@@ -31,7 +31,7 @@ The project was forked from [Live2DSharpSDK](https://github.com/Coloryr/Live2DCS
     # Run the app
     dotnet run
 
-### Using Visual Studio to start the project
+### Running on Visual Studio
 
 1. Open `Live2DCSharpSDK.sln` in root directory.
 2. Configure startup project as **Live2DCSharp.[Avalonia OR OpenTK OR WPF]**
