@@ -6,28 +6,31 @@
 
 ![demo](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/image/demo.png)
 
-此 Project 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) 複製。另外增加了 `LAppWavFileHandler` 和 Sample。
+此 Repo 從 [Live2DSharpSDK](https://github.com/Coloryr/Live2DCSharpSDK) 複製。另外增加了 `LAppWavFileHandler` 和實例。
 
 ## 開始使用
 
 ### 前提條件
 
-從[官網](https://www.live2d.com/en/sdk/download/native/)下載Cubism SDK的zip檔。請注意，不需要解壓縮 zip 檔案。
+從[官網](https://www.live2d.com/en/sdk/download/native/)下載Cubism SDK的zip檔。
 
 ### 設定Repo
 
-    # 複製此repo
-    git clone https://github.com/chikin030611/Live2DCSharpSDK.git
+1. 複製此repo。
+```
+# 複製此repo
+git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
-    # 轉到repo
-    cd Live2DCSharpSDK.Avalonia
+# 轉到repo
+cd Live2DCSharpSDK.Avalonia
 
-    # 先執行應用程序，這樣就可以創建 \bin 和 \obj
-    dotnet run
-
-1. 解壓縮 Cubism SDK 壓縮檔。
-2. 從`\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`複製`Live2DCubismCore.dll`。
-3. 將`Live2DCubismCore.dll`貼到`\Live2DCSharpSDK.[Avalonia 或 OpenTK 或 WPF]\bin\Debug\net8.0`。
+# 先執行應用程序，這樣就可以創建 \bin 和 \obj
+dotnet run
+```
+2. 關閉應用程式。
+3. 解壓縮 Cubism SDK 壓縮檔。
+4. 從`\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`複製`Live2DCubismCore.dll`。
+5. 將`Live2DCubismCore.dll`貼到`\Live2DCSharpSDK.[Avalonia 或 OpenTK 或 WPF]\bin\Debug\net8.0`。
 
 ### 使用 Visual Studio 啟動項目
 
@@ -42,8 +45,6 @@
 - **Live2DCSharpSDK.Avalonia**：使用 [AvaloniaUI](https://avaloniaui.net/) 構建的GUI
 - **Live2DCSharpSDK.OpenTK**：使用 [OpenTK](https://opentk.net/) 構建的GUI
 - **Live2DCSharpSDK.WPF**：使用 WPF 和 [OpenTK](https://opentk.net/) 構建的GUI
-
-**Live2DCSharpSDK.Avalonia** 是我電腦上唯一可以啟動並使用的 Project 。**Live2DCSharpSDK.OpenTK** 啟動時應用程式會當機。**Live2DCSharpSDK.WPF** 只顯示黑屏。
 
 如需在其他 Projects 上使用 **Live2D**，只需複製 **Live2DCSharpSDK.App** 和 **Live2DCSharpSDK.Framework** 至其 Project 。
 
@@ -61,7 +62,7 @@
 
 ### 程式碼流程
 
-在 `Live2dControl.axaml.cs` 中，新的 `Live2dRender.cs` 實例被初始化。當您按一下佈局中的按鈕時，將呼叫 `StartSpeaking()` 。
+在 `Live2dControl.axaml.cs` 中，新的 `Live2dRender.cs` 實例被初始化。當您按一下佈局中的按鈕時，將呼叫 `Live2dRender.cs` 的 `StartSpeaking()` 。
 
 在 `Live2dRender.cs` ， `StartSpeaking()` 調用 `QnaAudioManager.cs` 中的功能播放音頻(模型說話)。 `Live2dRender.cs` 也與 `LAppDelegate.cs` 互動，對音頻播放與Live2D模型嘴部動作進行同步。通過分析音頻聲波，就能調整嘴巴大小實現同步。
 
@@ -75,6 +76,7 @@ Live2D模型和答案音頻檔案分別儲存在 `\resources\models` 和 `\resou
 
 1. 某些模型在說話時可能無法充分張開嘴巴。可以在 `LAppModel.cs:423` 調整 `weight` 以調整嘴部動作。
 2. 首次播放音頻時，模型嘴部動作會有延遲。但之後嘴部動作會與音頻同步。
+3. **Live2DCSharpSDK.Avalonia** 是我電腦上唯一可以啟動並使用的 Project 。**Live2DCSharpSDK.OpenTK** 啟動時應用程式會當機。**Live2DCSharpSDK.WPF** 只顯示黑屏。
 
 ## Visual Studio 推薦擴充功能
 
