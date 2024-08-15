@@ -16,18 +16,21 @@ Download the zip file of Cubism SDK from the [website](https://www.live2d.com/en
 
 ### Set Up The Repo
 
-    # Clone this repository
-    git clone https://github.com/chikin030611/Live2DCSharpSDK.git
+1. Clone the repo.
+```
+# Clone this repository
+git clone https://github.com/chikin030611/Live2DCSharpSDK.git
 
-    # Go into the repository
-    cd Live2DCSharpSDK.Avalonia
-    
-    # Run the app first, so \bin and \obj can be created
-    dotnet run
-    
-1. Extract the Cubism SDK zip file.
-2. Copy `Live2DCubismCore.dll` from `\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`.
-3. Paste the `Live2DCubismCore.dll` in `\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0`.
+# Go into the repository
+cd Live2DCSharpSDK/Live2DCSharpSDK.Avalonia
+
+# Run the app first, so \bin and \obj can be created
+dotnet run
+```
+2. Close the app.
+3. Extract the Cubism SDK zip file.
+4. Copy `Live2DCubismCore.dll` from `\CubismSdkForNative-5-r.1\Core\dll\windows\x86_64`.
+5. Paste the `Live2DCubismCore.dll` in `\Live2DCSharpSDK.[Avalonia OR OpenTK OR WPF]\bin\Debug\net8.0`.
 
 ### Running on Terminal
 
@@ -48,8 +51,6 @@ Download the zip file of Cubism SDK from the [website](https://www.live2d.com/en
 - **Live2DCSharpSDK.OpenTK**: GUI built with [OpenTK](https://opentk.net/)
 - **Live2DCSharpSDK.WPF**: GUI built with **WPF** and [OpenTK](https://opentk.net/)
 
-**Live2DCSharpSDK.Avalonia** is the only project that can be started and used on my computer. For **Live2DCSharpSDK.OpenTK**, the app crashes when launched. For **Live2DCSharpSDK.WPF**, only black screen is shown.
-
 Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for implementation on other projects.
 
 **Live2DCSharpSDK.App** can be modified as needed. **Live2DCSharpSDK.Framework** is not recommended to be modified unless necessary.
@@ -66,7 +67,7 @@ Only **Live2DCSharpSDK.App** AND **Live2DCSharpSDK.Framework** are required for 
 
 ### Workflow
 
-In `Live2dControl.axaml.cs`, new `Live2dRender.cs` instance is initialized. When the button in the layout is clicked, `StartSpeaking()` is called.
+In `Live2dControl.axaml.cs`, new `Live2dRender.cs` instance is initialized. When the button in the layout is clicked, `StartSpeaking()` of `Live2dRender.cs` is called.
 
 In `Live2dRender.cs`, `StartSpeaking()` calls a function in `QnaAudioManager.cs` for audio playback (model speaking). `Live2dRender.cs` also interacts with the `LAppDelegate.cs` to synchronize the mouth movements of the Live2D model with the audio playback. This synchronization is achieved by analyzing the audio sound waves and adjusting the mouth size accordingly.
 
@@ -80,6 +81,7 @@ Live2D models files and audio files of answers are stored in `\resources\models`
 
 1. Some models may not open the mouth wide enough when speaking. `weight` can be configured to adjust the mouth movement in `LAppModel.cs:423`.
 2. The mouth movement of the model is delayed the first time the audio is played. However, the mouth movement is in sync with the audio afterwards.
+3. **Live2DCSharpSDK.Avalonia** is the only project that can be started and used on my computer. For **Live2DCSharpSDK.OpenTK**, the app crashes when launched. For **Live2DCSharpSDK.WPF**, only black screen is shown.
 
 ## Recommended Extension for Visual Studio
 
