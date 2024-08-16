@@ -1,4 +1,4 @@
-# Live2DCSharpSDK
+# Live2DCSharpSDK ( Live2D model with preset answer (C# .NET) )
 
 [中文版README](https://github.com/chikin030611/Live2DCSharpSDK/blob/master/README_ZH.md)
 
